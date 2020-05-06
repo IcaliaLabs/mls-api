@@ -1,0 +1,13 @@
+{
+  "@odata.context": "https://api.bridgedataoutput.com/api/v2/OData/test/$metadata#Property",
+  "@odata.nextLink": "https://api.bridgedataoutput.com/api/v2/OData/test/",
+  "value": [
+    {
+      "@odata.context": "https://api.bridgedataoutput.com/api/v2/OData/test/$metadata#Property",
+      "@odata.id": "https://api.bridgedataoutput.com/api/v2/OData/test/Property('P_5af601c3fc76173b348291e9')",
+      "ListingKey": "P_5af601c3fc76173b348291e9",
+      "ListingId": "5af601c3fc76173b348291ea",
+      "OriginatingSystemKey": "test"
+    }
+  ]
+}
