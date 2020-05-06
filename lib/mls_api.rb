@@ -14,7 +14,7 @@ module MlsApi
   ###
   class Client
     def initialize(connection)
-      @connection = connection || Connection.new().connection
+      @connection = connection
     end
     
     def properties(params = {})
