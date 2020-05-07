@@ -4,7 +4,7 @@ require 'faraday'
 
 module MlsApi
   ###
-  # @description: Class responsible to handle all API calls
+  # @description: Class responsible to create API connection
   # @param server_token: Server token for access api
   # @param dataset: Dataset ID
   ###
@@ -21,15 +21,15 @@ module MlsApi
     
     protected
     
-    def set_connection
-      @connection = Faraday.new(
-        url: base_url,
-        headers: {
-          'Content-Type' => 'application/json',
-          'Authorization': "Bearer #{@server_token}"
-        }
-      )
-    end
+      def set_connection
+        @connection = Faraday.new(
+          url: base_url,
+          headers: {
+            'Content-Type' => 'application/json',
+            'Authorization': "Bearer #{@server_token}"
+          }
+        )
+      end
 
       def base_url
         sprintf(URL, @dataset)

@@ -3,14 +3,12 @@
 require 'mls_api/version'
 require 'mls_api/mls_error'
 require 'mls_api/connection'
-require 'faraday'
 require 'json'
 
 module MlsApi
   ###
   # @description: Class responsible to handle all API calls
-  # @param server_token: Server token for access api
-  # @param dataset: Dataset ID
+  # @param connection: Faraday
   ###
   class Client
     def initialize(connection)

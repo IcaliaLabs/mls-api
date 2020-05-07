@@ -7,7 +7,7 @@ RSpec.describe MlsApi::Client do
   let(:conn)   { Faraday.new { |b| b.adapter(:test, stubs) } }
   let(:client) { described_class.new(conn) }
 
-  it 'parses name' do
+  it 'gets properties' do
     stubs.get('/Property') do |env|
       [
         200,
