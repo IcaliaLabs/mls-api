@@ -16,7 +16,19 @@ RSpec.describe MlsApi::Client do
       ]
     end
 
-    expect(client.properties.key?('value')).to be true
-    expect(client.properties['value'].kind_of?(Array)).to be true
+    expect(client.properties.kind_of?(Array)).to be true
+  end
+
+  it 'gets property' do
+    stubs.get("/Property('P_5af601c3fc76173b348291e9')") do |env|
+      [
+        200,
+        { 'Content-Type': 'application/javascript' },
+        File.open("#{Dir.pwd}/spec/fixtures/files/property.txt").read
+      ]
+    end
+
+    property = client.property('P_5af601c3fc76173b348291e9')
+    expect(property.ListingKey).to eq('P_5af601c3fc76173b348291e9')
   end
 end
