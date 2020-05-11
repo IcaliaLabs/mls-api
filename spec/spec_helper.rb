@@ -1,4 +1,5 @@
 require "bundler/setup"
+require 'pry'
 require "mls_api"
 
 RSpec.configure do |config|

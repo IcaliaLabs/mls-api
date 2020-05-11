@@ -3,6 +3,8 @@
 require 'mls_api/version'
 require 'mls_api/mls_error'
 require 'mls_api/connection'
+require 'mls_api/resources/base'
+require 'mls_api/resources/property'
 require 'json'
 
 module MlsApi
@@ -18,19 +20,13 @@ module MlsApi
     def properties(params = {})
       response = @connection.get('/Property', params)
 
-      get_body(response)
+      Resources::Property.from_collection response.body
     end
 
     def property(listing_key)
       response = @connection.get("/Property('#{listing_key}')")
 
-      get_body(response)
+      Resources::Property.new response.body
     end
-
-    protected
-
-      def get_body(response)
-        JSON.parse(response.body)
-      end
   end
 end
