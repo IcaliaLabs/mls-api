@@ -42,9 +42,14 @@ module MlsApi
         self
       end
 
-      def to_query
+      def to_hash
         @params['$filter'] = @filters.join(' and ')
-        query = URI.encode_www_form(@params)
+        @params
+      end
+
+
+      def to_query
+        query = URI.encode_www_form(to_hash)
         "?#{URI.decode(query)}"
       end
 
