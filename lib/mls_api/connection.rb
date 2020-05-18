@@ -9,7 +9,7 @@ module MlsApi
   # @param dataset: Dataset ID
   ###
   class Connection
-    URL = 'https://api.bridgedataoutput.com/api/v2/OData/%s'
+    URL = 'https://api.bridgedataoutput.com/api/v2/OData/%s/'
 
     attr_reader :connection
 

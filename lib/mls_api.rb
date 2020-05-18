@@ -19,13 +19,13 @@ module MlsApi
     end
     
     def properties(params = {})
-      response = @connection.get('/Property', params)
+      response = @connection.get('Property', params)
 
       Resources::Property.from_collection response.body
     end
 
     def property(listing_key)
-      response = @connection.get("/Property('#{listing_key}')")
+      response = @connection.get("Property('#{listing_key}')")
 
       Resources::Property.new response.body
     end
