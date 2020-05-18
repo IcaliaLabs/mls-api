@@ -33,7 +33,7 @@ module MlsApi
       end
 
       def where_city(name)
-        equal_query('City', name)
+        equal_query('City', "'#{name}'")
         self
       end
 
@@ -42,7 +42,8 @@ module MlsApi
         self
       end
 
-      def to_s
+      def to_query
+        @params['$filter'] = @filters.join(' and ')
         query = URI.encode_www_form(@params)
         "?#{URI.decode(query)}"
       end
