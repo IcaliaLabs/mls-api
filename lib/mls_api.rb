@@ -5,6 +5,7 @@ require 'mls_api/mls_error'
 require 'mls_api/connection'
 require 'mls_api/resources/base'
 require 'mls_api/resources/property'
+require 'mls_api/query_builder/reso'
 require 'json'
 
 module MlsApi
