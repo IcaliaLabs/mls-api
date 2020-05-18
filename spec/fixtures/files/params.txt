@@ -1,0 +1,13 @@
+{
+  "filters": {
+    "city": "Lewisville",
+    "list_price": 310000.0",
+    "monthly_price": 2125.0"
+    "coordinates": {
+      "latitude": 36.091513,
+      "longitude": -115.10998
+    }
+  },
+  "orders": {
+  }
+}
