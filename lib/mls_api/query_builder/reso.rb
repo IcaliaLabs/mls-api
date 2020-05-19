@@ -18,13 +18,10 @@ module MlsApi
 
       def where_price(amount)
         equal_query('ListPrice', amount)
-        self
       end
 
       def where_between_price(lower_amount, greather_amount)
-        
         between_query('ListPrice', lower_amount, greather_amount)
-        self
       end
 
       def top(limit)
@@ -34,27 +31,26 @@ module MlsApi
 
       def where_city(name)
         equal_query('City', "'#{name}'")
-        self
       end
 
       def where_coordinates(latitude, longitude, radius = 0.5)
         @filters << "geo.distance(Coordinates, POINT(#{longitude} #{latitude})) lt #{radius}"
-        self
       end
 
       def residentials
         equal_query('PropertyType', "'Residential'")
-        self
       end
 
       def on_sale
         equal_query('StandardStatus', "'Residential Lease'")
-        self
       end
 
       def for_rent
         equal_query('StandardStatus', "'Residential Income'")
-        self
+      end
+
+      def active
+        equal_query('MlsStatus', "'Active Option Contract'")
       end
 
       def to_hash
@@ -62,21 +58,25 @@ module MlsApi
         @params
       end
 
-
       def to_query
         query = URI.encode_www_form(to_hash)
         "?#{URI.decode(query)}"
       end
 
+      def add_filter(filter)
+        @filters << filter
+        self
+      end
+
       private
 
       def equal_query(key, value)
-        @filters << "#{key} eq #{value}"
+        add_filter("#{key} eq #{value}")
       end
 
       def between_query(key, lower_value, greather_value)
-        query = "#{key} ge #{lower_value} and #{key} le #{greather_value}"
-        @filters << query
+        filter = "#{key} ge #{lower_value} and #{key} le #{greather_value}"
+        add_filter(filter)
       end
     end
   end
