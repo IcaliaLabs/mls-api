@@ -42,6 +42,21 @@ module MlsApi
         self
       end
 
+      def residentials
+        equal_query('PropertyType', "'Residential'")
+        self
+      end
+
+      def on_sale
+        equal_query('StandardStatus', "'Residential Lease'")
+        self
+      end
+
+      def for_rent
+        equal_query('StandardStatus', "'Residential Income'")
+        self
+      end
+
       def to_hash
         @params['$filter'] = @filters.join(' and ')
         @params
